@@ -17,7 +17,7 @@
 
   export default {
     name: 'Home',
-    components: {Topnav}
+    components: {Topnav},
   };
 </script>
 
