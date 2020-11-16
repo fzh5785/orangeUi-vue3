@@ -2,16 +2,16 @@ import {createApp} from 'vue';
 import App from './App.vue';
 import './index.css';
 import {createWebHashHistory, createRouter} from 'vue-router';
-import Feng from './components/Feng.vue';
-import Feng2 from './components/Feng2.vue';
+import Home from  './views/Home.vue'
+import Doc from  './views/Doc.vue'
 
 
 const history = createWebHashHistory();
 const router = createRouter({
   history: history,
   routes: [
-    {path: '/', component: Feng},
-    {path:'/xxx',component: Feng2}
+    {path: '/', component: Home},
+    {path:'/doc',component: Doc}
   ]
 });
 
