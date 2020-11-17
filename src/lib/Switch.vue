@@ -29,7 +29,8 @@
     background: grey;
     border-radius: $h/2;
     position: relative;
-    >  span {
+
+    > span {
       position: absolute;
       top: 2px;
       left: 2px;
@@ -37,13 +38,20 @@
       width: $h2;
       background: white;
       border-radius: $h2/2;
+      transition: left .25s;
     }
   }
+
   button.change {
     background: blue;
-    >span {
+
+    > span {
       left: calc(100% - #{$h2} - 2px);
     }
   }
 
+  //解决css边框黑线问题
+  button:focus {
+    outline: none;
+  }
 </style>
