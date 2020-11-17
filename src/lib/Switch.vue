@@ -1,30 +1,31 @@
 <template>
-  <button @click="toggle" :class="{change}">
+  <button @click="toggle" :class="{change:value}">
     <span></span>
   </button>
 </template>
 
 <script>
-  import {ref} from "vue"
 
   export default {
     name: "Switch",
-    setup() {
-      const change = ref(false)
+    props: {
+      value: Boolean
+    },
+    setup(props,content) {
       const toggle = () => {
-        change.value = !change.value
+        content.emit('update:value',!props.value)
       }
-      return {change, toggle}
+      return {toggle}
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  $h: 22px;
+  $h: 24px;
   $h2: $h - 4px;
   button {
     height: $h;
-    width: $h2*2;
+    width: $h2*2.5;
     border: none;
     background: grey;
     border-radius: $h/2;
@@ -40,18 +41,31 @@
       border-radius: $h2/2;
       transition: left .25s;
     }
-  }
+    &.change {
+      background: #1890ff;
 
-  button.change {
-    background: blue;
-
-    > span {
-      left: calc(100% - #{$h2} - 2px);
+      > span {
+        left: calc(100% - #{$h2} - 2px);
+      }
+    }
+    //解决css边框黑线问题
+    &:focus {
+      outline: none;
+    }
+    &:active{
+      >span {
+        width: $h2 + 4px;
+      }
+    }
+    &.change:active{
+      >span{
+        width: $h2 + 4px;
+        margin-left: -4px;
+      }
     }
   }
 
-  //解决css边框黑线问题
-  button:focus {
-    outline: none;
-  }
+
+
+
 </style>
