@@ -1,10 +1,12 @@
 <template>
-  <button class="orange-button" :class="`orange-theme-${theme}`">
+  <button class="orange-button" :class="classes">
     <slot/>
   </button>
 </template>
 
 <script lang="ts">
+  import {computed} from 'vue';
+
   export default {
     name: 'Button',
     //inheritAttrs: false, //取消默认绑定
@@ -12,7 +14,21 @@
       theme: {
         type: String,
         default: 'button'
+      },
+      size: {
+        type: String,
+        default: 'normal'
       }
+    },
+    setup(props) {
+      const {theme,size} = props
+      const classes = computed(() => {
+        return {
+          [`orange-theme-${theme}`] : theme,
+          [`orange-size-${size}`] : size
+        }
+      });
+      return {classes}
     }
   };
 </script>
@@ -55,21 +71,36 @@
     &::-moz-focus-inner {
       border: 0;
     }
-    &.orange-theme-link{
+
+    &.orange-theme-link {
       border-color: transparent;
       box-shadow: none;
       color: $blue;
-      &:hover,&:focus{
-        color: lighten($blue,10%);
+
+      &:hover, &:focus {
+        color: lighten($blue, 10%);
       }
     }
-    &.orange-theme-text{
+
+    &.orange-theme-text {
       border-color: transparent;
       box-shadow: none;
       color: inherit;
-      &:hover,&:focus{
-        background: darken(white,5%);
+
+      &:hover, &:focus {
+        background: darken(white, 5%);
       }
+    }
+    &.orange-size-big {
+      font-size: 24px;
+      height: 48px;
+      padding: 0 16px;
+    }
+
+    &.orange-size-small {
+      font-size: 12px;
+      height: 20px;
+      padding: 0 4px;
     }
   }
 </style>
