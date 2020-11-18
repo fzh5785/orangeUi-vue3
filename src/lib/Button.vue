@@ -1,12 +1,19 @@
 <template>
-  <button>
+  <button class="orange-button" :class="`theme-${theme}`">
     <slot/>
   </button>
 </template>
 
-<script>
+<script lang="ts">
   export default {
-    name: "Button"
+    name: "Button",
+    //inheritAttrs: false, //取消默认绑定
+    props: {
+      theme: {
+        type: String,
+        default: 'button'
+      }
+    }
   }
 </script>
 
