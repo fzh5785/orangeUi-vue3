@@ -54,11 +54,11 @@
         }
       }
       const cancel = ()=> {
-        props.cancel?.()
+        props.cancel?.()  //props.cancel && props.cancel() !== false
         close()
       }
       const ok = ()=> {
-        if(props.ok?.() !== false){
+        if(props.ok && props.ok() !== false){
           close()
         }
       }
