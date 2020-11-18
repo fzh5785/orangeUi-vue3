@@ -1,11 +1,17 @@
 <template>
   <div class="topnav">
-    <div class="logo" >LOGO</div>
+    <svg class="icon" @click="toggleAside" >
+      <use xlink:href="#icon-RectangleCopy"></use>
+    </svg>
+    <div class="logo">
+      <svg class="icon">
+        <use xlink:href="#icon-orange"></use>
+      </svg>
+    </div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
-    <span class="toggleAside" @click="toggleAside"></span>
   </div>
 </template>
 
@@ -33,10 +39,18 @@
     z-index: 10;
     justify-content: center;
     align-items: center;
-
+    >.icon {
+      width: 24px;
+      height: 24px;
+      display: none;
+    }
     > .logo {
       max-width: 6em;
       margin-right: auto;
+      >.icon {
+        width: 32px;
+        height: 32px;
+      }
     }
 
     > .menu {
@@ -49,16 +63,6 @@
       }
     }
 
-    > .toggleAside {
-      display: none;
-      width: 24px;
-      height: 24px;
-      background: red;
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
 
     @media (max-width: 500px) {
       > .menu {
@@ -67,7 +71,9 @@
       > .logo {
         margin: 0 auto
       }
-      >.toggleAside{display: inline-block}
+      >.icon{
+        display: block;
+      }
     }
   }
 

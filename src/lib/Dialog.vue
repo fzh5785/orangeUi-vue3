@@ -1,23 +1,25 @@
 <template>
-  <div class="orange-dialog-overlay"></div>
-  <div class="orange-dialog-wrapper">
-    <div class="orange-dialog">
-      <header>
-        标题
-        <svg class="icon">
-          <use xlink:href="#icon-close"></use>
-        </svg>
-      </header>
-      <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
-      </main>
-      <footer>
-        <Button>取消</Button>
-        <Button level="main">确认</Button>
-      </footer>
+  <template v-if="visible">
+    <div class="orange-dialog-overlay" @click="onClickOverlay"></div>
+    <div class="orange-dialog-wrapper">
+      <div class="orange-dialog">
+        <header>
+          标题
+          <svg class="icon" @click="close">
+            <use xlink:href="#icon-close"></use>
+          </svg>
+        </header>
+        <main>
+          <p>第一行字</p>
+          <p>第二行字</p>
+        </main>
+        <footer>
+          <Button @click="cancel">取消</Button>
+          <Button level="main" @click="ok">确认</Button>
+        </footer>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script>
@@ -25,7 +27,43 @@
 
   export default {
     name: "Dialog",
-    components: {Button}
+    components: {Button},
+    props: {
+      visible: {
+        type: Boolean,
+        default: false
+      },
+      onClickOverlay: {
+        type: Boolean,
+        default: true
+      },
+      cancel: {
+        type: Function
+      },
+      ok: {
+        type: Function
+      }
+    },
+    setup(props,context){
+      const close = ()=> {
+       context.emit('update:visible',false)
+      }
+      const onClickOverlay = ()=> {
+        if(props.onClickOverlay){
+          close()
+        }
+      }
+      const cancel = ()=> {
+        props.cancel?.()
+        close()
+      }
+      const ok = ()=> {
+        if(props.ok?.() !== false){
+          close()
+        }
+      }
+      return {close,onClickOverlay,cancel,ok}
+    }
   }
 </script>
 
