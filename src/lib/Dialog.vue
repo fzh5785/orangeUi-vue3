@@ -4,14 +4,13 @@
     <div class="orange-dialog-wrapper">
       <div class="orange-dialog">
         <header>
-          标题
+          <slot name="title"/>
           <svg class="icon" @click="close">
             <use xlink:href="#icon-close"></use>
           </svg>
         </header>
         <main>
-          <p>第一行字</p>
-          <p>第二行字</p>
+          <slot name="content"/>
         </main>
         <footer>
           <Button @click="cancel">取消</Button>
