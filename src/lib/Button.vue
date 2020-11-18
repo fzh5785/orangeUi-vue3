@@ -1,5 +1,6 @@
 <template>
-  <button class="orange-button" :class="classes">
+  <button class="orange-button" :class="classes" :disabled="disabled">
+    <span class="orange-loading" v-if="loading"></span>
     <slot/>
   </button>
 </template>
@@ -18,14 +19,27 @@
       size: {
         type: String,
         default: 'normal'
+      },
+      level: {
+        type: String,
+        default: 'normal'
+      },
+      disabled: {
+        type:Boolean,
+        default: false
+      },
+      loading: {
+        type: Boolean,
+        default: false
       }
     },
     setup(props) {
-      const {theme,size} = props
+      const {theme,size,level} = props
       const classes = computed(() => {
         return {
           [`orange-theme-${theme}`] : theme,
-          [`orange-size-${size}`] : size
+          [`orange-size-${size}`] : size,
+          [`orange-level-${level}`] : level
         }
       });
       return {classes}
@@ -38,6 +52,8 @@
   $border-color: #d9d9d9;
   $color: #333;
   $blue: #40a9ff;
+  $red: red;
+  $grey: grey;
   $radius: 4px;
   .orange-button {
     box-sizing: border-box;
@@ -101,6 +117,84 @@
       font-size: 12px;
       height: 20px;
       padding: 0 4px;
+    }
+
+    &.orange-theme-button {
+      &.orange-level-main {
+        background: $blue;
+        color: white;
+        border-color: $blue;
+        &:hover, &:focus {
+          background: darken($blue, 10%);
+          border-color: darken($blue, 10%);
+        }
+      }
+      &.orange-level-danger {
+        background: $red;
+        border-color: $red;
+        color: white;
+        &:hover, &:focus {
+          background: darken($red, 10%);
+          border-color: darken($red, 10%);
+        }
+      }
+    }
+    &.orange-theme-link {
+      &.orange-level-danger {
+        color: $red;
+        &:hover, &:focus {
+          color: darken($red, 10%);
+        }
+      }
+    }
+    &.orange-theme-text {
+      &.orange-level-main {
+        color: $blue;
+        &:hover, &:focus {
+          color: darken($blue, 10%);
+        }
+      }
+      &.orange-level-danger {
+        color: $red;
+        &:hover, &:focus {
+          color: darken($red, 10%);
+        }
+      }
+    }
+    &.orange-theme-button {
+      &[disabled] {
+        cursor: not-allowed;
+        color: $grey;
+        &:hover {
+          border-color: $grey;
+        }
+      }
+    }
+    &.orange-theme-link, &.orange-theme-text {
+      &[disabled] {
+        cursor: not-allowed;
+        color: $grey;
+      }
+    }
+    >.orange-loading {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      margin-right: 4px;
+      border-radius: 8px;
+      border-color: $blue $blue $blue transparent;
+      border-style: solid;
+      border-width: 2px;
+      animation: orange-spin 1s infinite linear;
+    }
+  }
+  @keyframes orange-spin {
+    0% {
+      transform: rotate(0deg)
+    }
+
+    100% {
+      transform: rotate(360deg)
     }
   }
 </style>
