@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{change:value}">
+  <button class="orange-switch" @click="toggle" :class="{'orange-change':value}">
     <span></span>
   </button>
 </template>
@@ -11,19 +11,19 @@
     props: {
       value: Boolean
     },
-    setup(props,content) {
+    setup(props, content) {
       const toggle = () => {
-        content.emit('update:value',!props.value)
+        content.emit("update:value", !props.value)
       }
       return {toggle}
     }
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   $h: 24px;
   $h2: $h - 4px;
-  button {
+  .orange-switch {
     height: $h;
     width: $h2*2.5;
     border: none;
@@ -41,31 +41,33 @@
       border-radius: $h2/2;
       transition: left .25s;
     }
-    &.change {
+
+    &.orange-change {
       background: #1890ff;
 
       > span {
         left: calc(100% - #{$h2} - 2px);
       }
     }
+
     //解决css边框黑线问题
     &:focus {
       outline: none;
     }
-    &:active{
-      >span {
+
+    &:active {
+      > span {
         width: $h2 + 4px;
       }
     }
-    &.change:active{
-      >span{
+
+    &.orange-change:active {
+      > span {
         width: $h2 + 4px;
         margin-left: -4px;
       }
     }
   }
-
-
 
 
 </style>
