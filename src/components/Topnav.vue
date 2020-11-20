@@ -1,16 +1,23 @@
 <template>
   <div class="topnav">
-    <svg class="icon" @click="toggleAside" >
+    <svg class="icon" @click="toggleAside" v-if="toggleButtonVisible">
       <use xlink:href="#icon-RectangleCopy"></use>
     </svg>
-    <div class="logo">
+    <router-link to="/" class="logo">
       <svg class="icon">
         <use xlink:href="#icon-orange"></use>
       </svg>
-    </div>
+    </router-link>
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>
+        <router-link to="/doc">文档</router-link>
+      </li>
+      <li>
+        <router-link to="/doc">github</router-link>
+      </li>
+      <li>
+        <router-link to="/doc">gitee</router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -20,6 +27,12 @@
 
   export default {
     name: 'Topnav',
+    props: {
+      toggleButtonVisible: {
+        type: Boolean,
+        default: false
+      }
+    },
     setup() {
       const asideVisible = inject<Ref<boolean>>('asideVisible');
       const toggleAside = () => {
@@ -31,14 +44,15 @@
 </script>
 
 <style lang="scss" scoped>
+  $color:#007974;
   .topnav {
-    background: pink;
     display: flex;
     padding: 16px;
     position: relative;
-    z-index: 10;
+    z-index: 20;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 0 1px rgba(0,0,0,.25);
     >.icon {
       width: 24px;
       height: 24px;
@@ -57,6 +71,7 @@
       display: flex;
       white-space: nowrap;
       flex-wrap: nowrap;
+      color: $color;
 
       > li {
         margin: 0 1em;
@@ -69,7 +84,7 @@
         display: none
       }
       > .logo {
-        margin: 0 auto
+        margin: 0 auto;
       }
       >.icon{
         display: block;
