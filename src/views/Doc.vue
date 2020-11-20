@@ -3,7 +3,7 @@
     <Topnav class="nav" toggleButtonVisible/>
     <div class="content">
       <aside v-if="asideVisible">
-        <h2>开始</h2>
+        <h3>开始</h3>
         <ol>
           <li>
             <router-link to="/doc/intro">介绍</router-link>
@@ -15,7 +15,7 @@
             <router-link to="/doc/install">开始使用</router-link>
           </li>
         </ol>
-        <h2>组件列表</h2>
+        <h3>组件</h3>
         <ol>
           <li>
             <router-link to="/doc/switch">Switch 组件</router-link>
@@ -65,7 +65,7 @@
     >.content {
       flex-grow: 1;
       padding-top: 10px;
-      padding-left: 156px;
+      padding-left: 200px;
 
       @media (max-width: 500px) {
         padding-left: 0;
@@ -88,29 +88,37 @@
   }
 
   aside {
-    background: lightblue;
-    width: 150px;
+    width: 200px;
     position: fixed;
     top: 0;
     left: 0;
     padding: 70px 0 16px;
     height: 100%;
+    margin-top: 66px;
+    border-right: 1px solid #e8e8e8;
+    z-index: 10;
 
-    >h2 {
-      margin-bottom: 4px;
+    @media (max-width: 500px) {
+      background: #f9f9f9;
+      box-shadow: 0 5px 10px  rgba(0,0,0,.2);
+      padding: 20px 0 16px;
+    }
+    >h3 {
+      margin: 10px 0;
       padding: 0 16px;
+      color: rgb(44,62,80)
     }
 
     >ol {
       >li {
         >a {
           display: block;
-          padding: 4px 16px;
+          padding: 12px 0 12px 20px;
           text-decoration: none;
         }
 
-        .router-link-active {
-          background: white;
+        .router-link-exact-active {
+          background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
         }
       }
     }
