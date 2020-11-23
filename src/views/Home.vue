@@ -49,34 +49,35 @@
 
 <style lang="scss" scoped>
   $green: #02bcb0;
-  $border-radius:4px;
-  $color:#007974;
-
+  $border-radius: 4px;
+  $color: #007974;
   .topnavAndBanner {
-    //背景渐变
     background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
-    //圆弧
     clip-path: ellipse(80% 60% at 50% 40%);
   }
-
   .features {
     margin: 64px auto;
-    width: 400px;
-
+    padding: 0 16px;
     @media (min-width: 800px) {
       width: 800px;
+      >ul {
+        >li {
+          width: 50%;
+        }
+      }
     }
-
     @media (min-width: 1200px) {
       width: 1200px;
+      >ul {
+        >li {
+          width: 33.3333%;
+        }
+      }
     }
-
     >ul {
       display: flex;
       flex-wrap: wrap;
-
       >li {
-        width: 400px;
         margin: 16px 0;
         display: grid;
         justify-content: start;
@@ -86,25 +87,21 @@
           "icon text";
         grid-template-columns: 80px auto;
         grid-template-rows: 1fr auto;
-
         >svg {
           grid-area: icon;
           width: 64px;
           height: 64px;
         }
-
         >h3 {
           grid-area: title;
           font-size: 28px;
         }
-
         >p {
           grid-area: text
         }
       }
     }
   }
-
   .banner {
     color: $color;
     padding: 100px 0;
@@ -112,21 +109,17 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
     >.actions {
-      padding: 16px 0;
-
+      padding: 8px 0;
       a {
         margin: 0 8px;
-        color: white;
         background: $green;
+        color: white;
         display: inline-block;
-        padding: 12px 24px;
+        padding: 8px 24px;
         border-radius: $border-radius;
-
         &:hover {
           text-decoration: none;
-          background: lighten($green, 2%);
         }
       }
     }
