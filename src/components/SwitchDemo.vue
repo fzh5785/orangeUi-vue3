@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Switch 组件示例 </h1>
+    <h3>Switch 组件示例 </h3>
     <Demo :component="Switch1Demo"/>
     <Demo :component="Switch2Demo"/>
   </div>
