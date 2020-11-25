@@ -8,12 +8,6 @@
           <li>
             <router-link to="/doc/intro">介绍</router-link>
           </li>
-          <li>
-            <router-link to="/doc/install">安装</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/get-start">开始使用</router-link>
-          </li>
         </ol>
         <h3>组件</h3>
         <ol>
@@ -64,7 +58,7 @@
 
     >.content {
       flex-grow: 1;
-      padding-top: 10px;
+      padding-top: 60px;
       padding-left: 200px;
 
       @media (max-width: 500px) {
@@ -94,14 +88,12 @@
     left: 0;
     padding: 70px 0 16px;
     height: 100%;
-    margin-top: 66px;
     border-right: 1px solid #e8e8e8;
     z-index: 10;
 
     @media (max-width: 500px) {
       background: #f9f9f9;
       box-shadow: 0 5px 10px  rgba(0,0,0,.2);
-      padding: 20px 0 16px;
     }
     >h3 {
       margin: 10px 0;

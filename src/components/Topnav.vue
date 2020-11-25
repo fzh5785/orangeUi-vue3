@@ -13,10 +13,10 @@
         <router-link to="/doc">文档</router-link>
       </li>
       <li>
-        <router-link to="/doc">github</router-link>
+        <a target="_blank" href="https://github.com/fzh5785/orangeUi-vue3-website">github</a>
       </li>
       <li>
-        <router-link to="/doc">gitee</router-link>
+        <a target="_blank" href="https://gitee.com/fzh5785/orange-ui-vue3-website">gitee</a>
       </li>
     </ul>
   </div>
@@ -48,11 +48,13 @@
   .topnav {
     display: flex;
     padding: 16px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 20;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 1px rgba(0,0,0,.25);
     >.icon {
       width: 24px;
       height: 24px;

@@ -4,7 +4,7 @@
       <Topnav />
       <div class="banner">
         <h1>橘子UI</h1>
-        <h2>一个厉害的框架</h2>
+        <h2>一个基于Vue3的框架</h2>
         <p class="actions">
           <router-link to="/doc">快速上手 →</router-link>
         </p>
@@ -17,14 +17,14 @@
             <use xlink:href="#icon-vue"></use>
           </svg>
           <h3>基于 Vue 3</h3>
-          <p>骄傲地使用了 Vue 3 Composition API</p>
+          <p>使用了 Vue 3 Composition API</p>
         </li>
         <li>
           <svg>
             <use xlink:href="#icon-typescript"></use>
           </svg>
           <h3>基于 TypeScript </h3>
-          <p>源代码采用 TypeScript 书写（非严格检查）</p>
+          <p>源代码采用 TypeScript 书写</p>
         </li>
         <li>
           <svg>
@@ -95,6 +95,7 @@
         >h3 {
           grid-area: title;
           font-size: 28px;
+          font-weight: normal;
         }
         >p {
           grid-area: text
@@ -109,6 +110,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    >h1{
+      padding-bottom: 10px;
+    }
+    >h2 {
+      padding-bottom: 10px;
+    }
     >.actions {
       padding: 8px 0;
       a {
